@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gilroy", Arial, Helvetica, sans-serif;
+   }
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#loader {
+    width: 100%;
+    height: 100vh;
+    background-color: #111;
+    color: #fff;
+    position: relative;
+}
+
+#topheading {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#topheading h5 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+#loader h1 {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: red; */
+}
+
+/* REQUIRED FOR REVEAL ANIMATION */
+.reveal .parent {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+    overflow-y: hidden;
+}
+
+.reveal .parent .child {
+    display: block;
+    
+}
+
+.parent .child span{
+   display: inline-block;
+}
+
+#green {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 0vh;
+    background-color: #14cf93;
+}
