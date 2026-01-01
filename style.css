@@ -1,75 +1,246 @@
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Gilroy", Arial, Helvetica, sans-serif;
-   }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gilroy", sans-serif;
+}
 
 html, body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+.maz {
+  font-family: "Mazius Review 20.09", serif;
+  font-style: italic;
+  font-weight: 100;
+  color: #14cf93;
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
 #main {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 
+/* ========================================
+   LOADER SECTION
+   ======================================== */
 #loader {
-    width: 100%;
-    height: 100vh;
-    background-color: #111;
-    color: #fff;
-    position: relative;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  color: #fff;
+  z-index: 1000;
 }
 
-#topheading {
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
+#loader #topheading {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #topheading h5 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
 #loader h1 {
-   display: flex;
-   justify-content: center;
-   width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3vw;
+  font-weight: 500;
 }
 
-/* REQUIRED FOR REVEAL ANIMATION */
+/* ========================================
+   REVEAL ANIMATION
+   ======================================== */
+.reveal {
+  overflow: hidden;
+}
+
 .reveal .parent {
-   display: flex;
-   justify-content: center;
-   width: 100%;
-    overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .reveal .parent .child {
-    display: block;
-    
+  display: block;
 }
 
-.parent .child span{
-   display: inline-block;
+.parent .child span {
+  display: inline-block;
+  transform: translateY(100%);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+/* Animation state when revealed */
+.reveal.active .parent .child span {
+  transform: translateY(0);
+}
+
+/* ========================================
+   GREEN SCREEN TRANSITION
+   ======================================== */
 #green {
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    height: 0vh;
-    background-color: #14cf93;
+  display: none;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #14cf93;
+  z-index: 999;
+  transition: top 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Animation state for green screen */
+#green.active {
+  top: 0;
+}
+
+/* ========================================
+   HOME SECTION
+   ======================================== */
+#home {
+  width: 100%;
+  min-height: 200vh;
+  background-color: #dadada;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+#home #nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5vw;
+  width: 100%;
+  height: 100px;
+}
+
+#nav a {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12px;
+  color: #000;
+  letter-spacing: 1px;
+  padding: 5px 0;
+}
+
+#nav a .line {
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
+  height: 1px;
+  background-color: #000;
+}
+
+/* Line animations */
+#line1 {
+  left: 0;
+  width: 100%;
+  transition: width 1s all cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: 0.1s;
+}
+
+#line2 {
+  right: 0;
+  width: 0%;
+  transition: width 1s all cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#nav a:hover #line2 {
+  width: 0;
+}
+
+#nav a:hover #line1 {
+  width: 100%;
+}
+
+.row{
+margin-top: 5vw;
+display: flex;
+justify-content: space-between;
+width: 100%;
+color: #333;
+padding: 0 7vw;
+line-height: 1;
+padding-right: 12vw;
+}
+
+.row h1{
+    font-size: 13vw;
+    font-weight: 500;
+}
+.row .text{
+    margin-top: 5vw;
+}
+.row h5{
+    opacity: .6;
+    font-size: 11px;
+    font-weight: 500;
+}
+.row:nth-child(3){
+    margin-top: 0;
+}
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media screen and (max-width: 768px) {
+  #loader h1 {
+    font-size: 6vw;
+  }
+  
+  #topheading h5 {
+    font-size: 10px;
+  }
+  
+  #nav a {
+    font-size: 10px;
+  }
+  
+  #home #nav {
+    padding: 1.5rem 3vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #loader h1 {
+    font-size: 8vw;
+  }
+  
+  #home #nav {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
 }
